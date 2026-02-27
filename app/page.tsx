@@ -1,103 +1,25 @@
+import Link from "next/link";
+import { experience, resumeProjects, skillGroups } from "./content";
+
 export const runtime = "edge";
 
-const skillGroups = [
-  {
-    label: "Frontend",
-    value: "React (hooks & class-based), JavaScript, HTML, CSS",
-  },
-  {
-    label: "Backend",
-    value: "C# (.NET), Go",
-  },
-  {
-    label: "Scripting",
-    value: "Python, PowerShell",
-  },
-  {
-    label: "Database",
-    value: "SQL Server, PostgreSQL",
-  },
-  {
-    label: "Cloud & DevOps",
-    value: "Azure DevOps, Okta authentication",
-  },
-  {
-    label: "Data Analysis",
-    value: "Power BI, EdgeTI, Excel",
-  },
-  {
-    label: "Other",
-    value: "SharePoint, Power Automate, LDAP, SFTP, Regular Expressions",
-  },
-];
+const sectionClass = "mt-8 rounded-xl border border-white/10 bg-zinc-950/70 p-6 sm:p-8";
+const staticPillClass = "rounded-md border border-white/10 px-3 py-2 text-zinc-300";
+const linkPillClass =
+  "inline-flex rounded-md border border-sky-400/40 px-3 py-2 text-sky-300 transition-colors hover:bg-sky-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black";
+const sectionJumpLinkClass =
+  "rounded-md border border-white/10 px-3 py-2 text-sm text-zinc-300 transition-colors hover:border-zinc-600 hover:text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black";
 
-const experience = [
-  {
-    title: "Full Stack Developer",
-    company: "North Wind Group",
-    period: "February 2022 - February 2026",
-    highlights: [
-      "Developed and maintained full-stack React and .NET applications for enterprise and government clients including Lawrence Livermore National Laboratory and the US Army Corps of Engineers.",
-      "Implemented Okta SPA authentication to improve application security.",
-      "Reduced helpdesk backlog by resolving complex SharePoint issues.",
-      "Built EdgeTI dashboards by integrating BambooHR, Azure DevOps, and SharePoint APIs.",
-      "Automated database migration workflows with Python to reduce manual effort.",
-      "Refactored legacy systems to improve performance and maintainability.",
-    ],
-  },
-  {
-    title: "Quality Assurance (QA) Intern",
-    company: "North Wind Group",
-    period: "October 2020 - February 2022",
-    highlights: [
-      "Designed and maintained a QA SharePoint site to streamline team access to information.",
-      "Automated QA processes with Microsoft Forms and Power Automate to reduce manual data entry.",
-      "Created an issues management tracker used across multiple departments.",
-      "Produced data visualization reports with Python, Excel, and Power BI.",
-    ],
-  },
-  {
-    title: "Software Consultant",
-    company: "Snake River School District",
-    period: "February 2019 - November 2021",
-    highlights: [
-      "Built Python scripts to automate student account lifecycle management, cutting processing time from days to minutes.",
-      "Partnered with IT leadership to align software priorities with district needs.",
-      "Implemented data management improvements to strengthen overall system performance.",
-    ],
-  },
-];
-
-const projects = [
-  {
-    name: "Student Account Management System",
-    description:
-      "Automated account creation and deletion workflows for a school district using Python.",
-    href: "https://github.com/jordankalebpage/SRSDAccountCreation",
-  },
-  {
-    name: "Projects/Invoice Portal",
-    description: "Next.js application built with a colleague for a small business workflow.",
-    href: "https://github.com/jordankalebpage/next-geo-invoice",
-  },
-  {
-    name: "Twitter Color Changer",
-    description:
-      "Chrome extension that lets users customize Twitter background, text, and border colors.",
-    href: "https://github.com/jordankalebpage/twitter-background-thing",
-  },
-  {
-    name: "Anime Subtitle Renamer",
-    description:
-      "Go utility that renames anime videos and subtitle files for automatic subtitle loading in MPV.",
-    href: "https://github.com/jordankalebpage/anime-subtitle-renamer-thing",
-  },
-  {
-    name: "Anime Remove Torrenter Name and Hash",
-    description: "Go script that strips release group names and hashes from anime filenames.",
-    href: "https://github.com/jordankalebpage/anime-remove-torrenter-name-thing",
-  },
-];
+function ExternalIndicator() {
+  return (
+    <>
+      <span aria-hidden="true" className="ml-1">
+        ↗
+      </span>
+      <span className="sr-only"> (opens in new tab)</span>
+    </>
+  );
+}
 
 export default function Home() {
   return (
@@ -115,16 +37,44 @@ export default function Home() {
           enterprise-level applications, automating processes, and performing data analytics.
         </p>
 
+        <nav aria-label="Jump to section" className="mt-6">
+          <ul className="flex flex-wrap gap-2">
+            <li>
+              <a className={sectionJumpLinkClass} href="#skills">
+                Skills
+              </a>
+            </li>
+            <li>
+              <a className={sectionJumpLinkClass} href="#experience">
+                Experience
+              </a>
+            </li>
+            <li>
+              <a className={sectionJumpLinkClass} href="#selected-projects">
+                Projects
+              </a>
+            </li>
+            <li>
+              <a className={sectionJumpLinkClass} href="#education">
+                Education
+              </a>
+            </li>
+          </ul>
+        </nav>
+
         <ul className="mt-6 flex flex-wrap gap-2 text-sm">
-          <li className="rounded-md border border-white/10 px-3 py-2 text-zinc-300">
-            Greenville, SC
-          </li>
-          <li className="rounded-md border border-white/10 px-3 py-2 text-zinc-300">
-            [REDACTED_PHONE]
+          <li className={staticPillClass}>Greenville, SC</li>
+          <li>
+            <a
+              className={linkPillClass}
+              href="tel:[REDACTED_PHONE]"
+            >
+              [REDACTED_PHONE]
+            </a>
           </li>
           <li>
             <a
-              className="inline-flex rounded-md border border-sky-400/40 px-3 py-2 text-sky-300 transition-colors hover:bg-sky-400/10"
+              className={linkPillClass}
               href="mailto:[REDACTED_EMAIL]"
             >
               [REDACTED_EMAIL]
@@ -132,28 +82,32 @@ export default function Home() {
           </li>
           <li>
             <a
-              className="inline-flex rounded-md border border-sky-400/40 px-3 py-2 text-sky-300 transition-colors hover:bg-sky-400/10"
+              aria-label="LinkedIn (opens in new tab)"
+              className={linkPillClass}
               href="https://www.linkedin.com/in/jordankalebpage/"
               target="_blank"
               rel="noopener noreferrer"
             >
               LinkedIn
+              <ExternalIndicator />
             </a>
           </li>
           <li>
             <a
-              className="inline-flex rounded-md border border-sky-400/40 px-3 py-2 text-sky-300 transition-colors hover:bg-sky-400/10"
+              aria-label="GitHub (opens in new tab)"
+              className={linkPillClass}
               href="https://github.com/jordankalebpage"
               target="_blank"
               rel="noopener noreferrer"
             >
               GitHub
+              <ExternalIndicator />
             </a>
           </li>
         </ul>
       </section>
 
-      <section className="mt-8 rounded-xl border border-white/10 bg-zinc-950/70 p-6 sm:p-8">
+      <section id="skills" className={sectionClass}>
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-100">Skills</h2>
 
         <dl className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -166,7 +120,7 @@ export default function Home() {
         </dl>
       </section>
 
-      <section className="mt-8 rounded-xl border border-white/10 bg-zinc-950/70 p-6 sm:p-8">
+      <section id="experience" className={sectionClass}>
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-100">
           Professional Experience
         </h2>
@@ -191,28 +145,42 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-8 rounded-xl border border-white/10 bg-zinc-950/70 p-6 sm:p-8">
+      <section id="selected-projects" className={sectionClass}>
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-100">Selected Projects</h2>
+        <p className="mt-3 text-sm text-zinc-300">
+          These highlight real-world work and utilities. For dedicated React/Next.js showcase
+          builds, visit the Projects page.
+        </p>
+        <div className="mt-4">
+          <Link
+            className="inline-flex rounded-md border border-sky-400/40 px-3 py-2 text-sm font-medium text-sky-300 transition-colors hover:bg-sky-400/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+            href="/projects"
+          >
+            Explore React and Next.js Showcase
+          </Link>
+        </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {projects.map((project) => (
+          {resumeProjects.map((project) => (
             <article key={project.name} className="rounded-lg border border-white/10 p-4">
               <h3 className="text-base font-semibold text-zinc-100">{project.name}</h3>
               <p className="mt-2 text-sm leading-6 text-zinc-300">{project.description}</p>
               <a
-                className="mt-3 inline-flex text-sm font-medium text-sky-300 transition-colors hover:text-sky-200"
+                aria-label={`${project.name} repository (opens in new tab)`}
+                className="mt-3 inline-flex text-sm font-medium text-sky-300 transition-colors hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 View on GitHub
+                <ExternalIndicator />
               </a>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="mt-8 rounded-xl border border-white/10 bg-zinc-950/70 p-6 sm:p-8">
+      <section id="education" className={sectionClass}>
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-100">Education</h2>
         <p className="mt-4 text-zinc-200">Bachelor of Science in Computer Science</p>
         <p className="mt-1 text-sm text-zinc-300">
