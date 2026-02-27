@@ -14,7 +14,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur">
       <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link className="text-sm font-semibold tracking-wide text-zinc-100" href="/">
+        <Link
+          className="rounded-md text-sm font-semibold tracking-wide text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+          href="/"
+        >
           Jordan Page
         </Link>
 
@@ -31,7 +34,7 @@ export function Header() {
                   isActive
                     ? "bg-zinc-800 text-zinc-100"
                     : "text-zinc-300 hover:bg-zinc-900 hover:text-zinc-100"
-                }`}
+                } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black`}
                 href={item.href}
               >
                 {item.label}
