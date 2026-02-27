@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { experience, resumeProjects, skillGroups } from "./content";
 
-export const runtime = "edge";
-
 const sectionClass =
   "mt-8 rounded-xl border border-white/10 bg-zinc-950/70 p-6 sm:p-8";
 const linkPillClass =
