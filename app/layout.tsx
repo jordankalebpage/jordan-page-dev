@@ -14,7 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jordan Page",
+  title: {
+    default: "Jordan Page",
+    template: "%s | Jordan Page",
+  },
   description: "Full Stack Developer",
 };
 
@@ -28,8 +31,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-black text-zinc-100 antialiased`}
       >
+        <a
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-60 focus:rounded-md focus:bg-sky-300 focus:px-3 focus:py-2 focus:text-black focus:outline-none"
+          href="#main-content"
+        >
+          Skip to main content
+        </a>
         <Header />
-        <main>{children}</main>
+        <main id="main-content" aria-label="Main content">
+          {children}
+        </main>
       </body>
     </html>
   );
