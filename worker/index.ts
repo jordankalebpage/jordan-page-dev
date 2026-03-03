@@ -19,6 +19,24 @@ interface Env {
   };
 }
 
+type FetchHandler = {
+  fetch(request: Request): Promise<Response>;
+};
+
+type ServerHandler = ((request: Request) => Promise<Response>) | FetchHandler;
+
+function isFetchHandler(value: unknown): value is FetchHandler {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+
+  if (!("fetch" in value)) {
+    return false;
+  }
+
+  return typeof value.fetch === "function";
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
@@ -38,6 +56,16 @@ export default {
     }
 
     // Delegate everything else to vinext
-    return handler.fetch(request);
+    const serverHandler = handler as ServerHandler;
+
+    if (typeof serverHandler === "function") {
+      return serverHandler(request);
+    }
+
+    if (isFetchHandler(serverHandler)) {
+      return serverHandler.fetch(request);
+    }
+
+    throw new TypeError("Unsupported vinext server handler export.");
   },
 };
