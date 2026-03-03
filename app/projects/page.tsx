@@ -3,13 +3,13 @@ export const runtime = "edge";
 export default function ProjectsPage() {
   return (
     <section className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6">
-      <h1 className="text-3xl font-semibold tracking-tight text-[var(--text-primary)]">
+      <h1 className="text-3xl font-semibold tracking-tight text-(--text-primary)">
         Projects
       </h1>
 
-      <p className="mt-4 max-w-2xl text-[var(--text-secondary)]">
-        Coming soon. This area will highlight fun experiments and side projects built with
-        Next.js and React.
+      <p className="mt-4 max-w-2xl text-(--text-secondary)">
+        Coming soon. This area will highlight fun experiments and side projects
+        built with Next.js and React.
       </p>
     </section>
   );
