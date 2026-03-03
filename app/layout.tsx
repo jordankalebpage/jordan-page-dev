@@ -28,11 +28,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var theme=localStorage.getItem("jp-theme");if(theme==="light"||theme==="dark"){document.documentElement.dataset.theme=theme;}}catch(_){}})();`,
+          }}
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-black text-zinc-100 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-[var(--background)] text-[var(--foreground)] antialiased`}
       >
         <a
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-60 focus:rounded-md focus:bg-sky-300 focus:px-3 focus:py-2 focus:text-black focus:outline-none"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-60 focus:rounded-md focus:bg-[var(--skip-link-bg)] focus:px-3 focus:py-2 focus:text-[var(--skip-link-text)] focus:outline-none"
           href="#main-content"
         >
           Skip to main content

@@ -1,8 +1,51 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: dark;
   --background: #0a0a0a;
-  --foreground: #ededed;
+  --foreground: #f4f4f5;
+  --surface-header: rgb(0 0 0 / 0.8);
+  --surface-card: rgb(9 9 11 / 0.7);
+  --surface-active: #27272a;
+  --surface-hover: #18181b;
+  --border-subtle: rgb(255 255 255 / 0.1);
+  --border-strong: #52525b;
+  --text-primary: #f4f4f5;
+  --text-strong: #e4e4e7;
+  --text-secondary: #d4d4d8;
+  --text-muted: #a1a1aa;
+  --accent: #7dd3fc;
+  --accent-hover: #bae6fd;
+  --accent-border: rgb(56 189 248 / 0.4);
+  --accent-hover-bg: rgb(56 189 248 / 0.1);
+  --focus-ring: #7dd3fc;
+  --focus-ring-offset: #0a0a0a;
+  --skip-link-bg: #7dd3fc;
+  --skip-link-text: #0a0a0a;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --surface-header: rgb(255 255 255 / 0.84);
+  --surface-card: rgb(255 255 255 / 0.92);
+  --surface-active: #e4e4e7;
+  --surface-hover: #f4f4f5;
+  --border-subtle: rgb(24 24 27 / 0.12);
+  --border-strong: #a1a1aa;
+  --text-primary: #18181b;
+  --text-strong: #27272a;
+  --text-secondary: #3f3f46;
+  --text-muted: #52525b;
+  --accent: #0369a1;
+  --accent-hover: #075985;
+  --accent-border: rgb(14 116 144 / 0.35);
+  --accent-hover-bg: rgb(14 116 144 / 0.12);
+  --focus-ring: #0369a1;
+  --focus-ring-offset: #fafafa;
+  --skip-link-bg: #0369a1;
+  --skip-link-text: #f8fafc;
 }
 
 @theme inline {
@@ -16,5 +59,5 @@ body {
   min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
 }
