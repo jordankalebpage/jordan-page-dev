@@ -9,7 +9,7 @@ export default function ProjectsPage() {
 
       <p className="mt-4 max-w-2xl text-(--text-secondary)">
         Coming soon. This area will highlight fun experiments and side projects
-        built with Next.js and React.
+        built with Next.js and other technologies.
       </p>
     </section>
   );
