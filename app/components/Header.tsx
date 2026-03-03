@@ -85,14 +85,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-(--border-subtle) bg-(--surface-header) backdrop-blur">
-      <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link
-          className="rounded-md text-sm font-semibold tracking-wide text-(--text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)"
-          href="/"
-        >
-          Jordan Page
-        </Link>
-
+      <div className="mx-auto flex w-full max-w-5xl items-center justify-end px-4 py-3 sm:px-6">
         <nav aria-label="Primary" className="flex items-center gap-2">
           {navItems.map((item) => {
             const isActive =

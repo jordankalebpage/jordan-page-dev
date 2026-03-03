@@ -50,6 +50,12 @@ export default function Home() {
         <h1 className="mt-2 text-4xl font-bold tracking-tight text-(--text-primary) sm:text-5xl">
           Jordan Page
         </h1>
+        <a
+          href="mailto:jp@jordanpage.dev"
+          className="text-sm justify-center tracking-[0.18em] text-(--text-muted) hover:text-(--text-primary)"
+        >
+          jp@jordanpage.dev
+        </a>
 
         <p className="mt-6 max-w-3xl text-(--text-secondary)">
           Full Stack Developer with 4 years of enterprise experience building
