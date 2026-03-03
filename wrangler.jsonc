@@ -13,4 +13,7 @@
     "binding": "IMAGES",
   },
   "account_id": "0775141a220ba7208cb9a4dd32ee0a43",
+  "observability": {
+    "enabled": true,
+  },
 }
