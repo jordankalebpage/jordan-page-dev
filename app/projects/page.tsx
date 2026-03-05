@@ -1,4 +1,26 @@
+import type { Metadata } from "next";
+
 export const runtime = "edge";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Selected side projects, experiments, and showcase work from Jordan Page.",
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: "Projects",
+    description:
+      "Selected side projects, experiments, and showcase work from Jordan Page.",
+    url: "/projects",
+  },
+  twitter: {
+    title: "Projects",
+    description:
+      "Selected side projects, experiments, and showcase work from Jordan Page.",
+  },
+};
 
 export default function ProjectsPage() {
   return (

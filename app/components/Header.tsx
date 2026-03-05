@@ -14,6 +14,31 @@ const themeStorageKey = "jp-theme";
 
 type Theme = "dark" | "light";
 
+const getSystemTheme = (): Theme => {
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    return "dark";
+  }
+
+  return "light";
+};
+
+const getStoredTheme = (): Theme | null => {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const storedTheme = window.localStorage.getItem(themeStorageKey);
+
+  if (storedTheme === "dark" || storedTheme === "light") {
+    return storedTheme;
+  }
+
+  return null;
+};
+
 const getInitialTheme = (): Theme => {
   if (typeof document !== "undefined") {
     const documentTheme = document.documentElement.dataset.theme;
@@ -23,15 +48,13 @@ const getInitialTheme = (): Theme => {
     }
   }
 
-  if (typeof window !== "undefined") {
-    const storedTheme = window.localStorage.getItem(themeStorageKey);
+  const storedTheme = getStoredTheme();
 
-    if (storedTheme === "dark" || storedTheme === "light") {
-      return storedTheme;
-    }
+  if (storedTheme) {
+    return storedTheme;
   }
 
-  return "dark";
+  return getSystemTheme();
 };
 
 function SunIcon() {
@@ -77,11 +100,38 @@ export function Header() {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem(themeStorageKey, theme);
   }, [theme]);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const handleSystemThemeChange = () => {
+      const storedTheme = getStoredTheme();
+
+      if (storedTheme) {
+        return;
+      }
+
+      setTheme(mediaQuery.matches ? "dark" : "light");
+    };
+
+    handleSystemThemeChange();
+
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    };
+  }, []);
+
   const toggleTheme = () => {
-    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+    setTheme((currentTheme) => {
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+      window.localStorage.setItem(themeStorageKey, nextTheme);
+
+      return nextTheme;
+    });
   };
 
   return (
@@ -112,7 +162,6 @@ export function Header() {
 
           <button
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            aria-pressed={theme === "light"}
             className="group relative flex size-9 items-center justify-center rounded-full border border-(--border-subtle) bg-(--surface-card) text-(--text-secondary) shadow-[0_1px_10px_rgb(0_0_0/0.1)] transition-all hover:border-(--accent-border) hover:text-(--text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)"
             onClick={toggleTheme}
             type="button"

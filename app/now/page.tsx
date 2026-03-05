@@ -2,7 +2,22 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Now",
-  description: "What I am currently learning and working on.",
+  description:
+    "What Jordan Page is currently learning, exploring, and working on.",
+  alternates: {
+    canonical: "/now",
+  },
+  openGraph: {
+    title: "Now",
+    description:
+      "What Jordan Page is currently learning, exploring, and working on.",
+    url: "/now",
+  },
+  twitter: {
+    title: "Now",
+    description:
+      "What Jordan Page is currently learning, exploring, and working on.",
+  },
 };
 
 export default function NowPage() {
