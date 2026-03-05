@@ -15,7 +15,8 @@ export default function NowPage() {
       <p className="mt-4 max-w-2xl text-(--text-secondary)">
         This page is meant to show what I&apos;m currently working on/learning
         about. As of now, I&apos;m following along with the &quot;PyTorch for
-        Deep Learning & Machine Learning - Full Course&quot; course on YouTube.
+        Deep Learning & Machine Learning - Full Course&quot; course on YouTube
+        (25 hours of content!)
       </p>
 
       <div className="mt-6 overflow-hidden rounded-xl border border-(--border-subtle) bg-(--surface-card)">
