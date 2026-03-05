@@ -31,11 +31,11 @@ export type ShowcaseProject = {
 export const skillGroups: SkillGroup[] = [
   {
     label: "Frontend",
-    value: "React (hooks & class-based), JavaScript, HTML, CSS",
+    value: "React (hooks & class-based), TypeScript, JavaScript, HTML, CSS",
   },
   {
     label: "Backend",
-    value: "C# (.NET), Go",
+    value: "C# (.NET), Go, TypeScript (Next.js)",
   },
   {
     label: "Scripting",
@@ -47,7 +47,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     label: "Cloud & DevOps",
-    value: "Azure DevOps, Okta authentication",
+    value: "Azure DevOps, Okta authentication, Vercel, Cloudflare, Docker",
   },
   {
     label: "Data Analysis",
