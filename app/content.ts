@@ -31,7 +31,7 @@ export type ShowcaseProject = {
 export const skillGroups: SkillGroup[] = [
   {
     label: "Frontend",
-    value: "React (hooks & class-based), TypeScript, JavaScript, HTML, CSS",
+    value: "React, TypeScript, JavaScript, HTML, CSS",
   },
   {
     label: "Backend",
