@@ -56,12 +56,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/icon.svg",
+        url: "/favicon.svg",
         type: "image/svg+xml",
         sizes: "any",
       },
     ],
-    shortcut: "/icon.svg",
+    shortcut: "/favicon.svg",
   },
   openGraph: {
     type: "website",
