@@ -6,7 +6,7 @@ import "./globals.css";
 const siteUrl = new URL("https://jordanpage.dev");
 const siteTitle = "Jordan Page";
 const siteDescription =
-  "Personal website of Jordan Page, a full stack developer building polished React, Next.js, and .NET applications with a focus on accessibility, performance, and practical software.";
+  "Personal website of Jordan Page, a full stack developer building web apps.";
 const themeStorageKey = "jp-theme";
 
 const structuredData = [
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/opengraph-image",
+        url: "/social-card.svg",
         width: 1200,
         height: 630,
         alt: "Jordan Page personal website",
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/twitter-image"],
+    images: ["/social-card.svg"],
   },
 };
 
