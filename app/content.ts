@@ -54,6 +54,10 @@ export const skillGroups: SkillGroup[] = [
     value: "Power BI, EdgeTI, Excel",
   },
   {
+    label: "AI Tools",
+    value: "Cursor, Claude, Codex, Gemini",
+  },
+  {
     label: "Other",
     value: "SharePoint, Power Automate, LDAP, SFTP, Regular Expressions",
   },
@@ -105,7 +109,8 @@ export const resumeProjects: ResumeProject[] = [
   },
   {
     name: "Projects/Invoice Portal",
-    description: "Next.js application built with a colleague for a small business workflow.",
+    description:
+      "Next.js application built with a colleague for a small business workflow.",
     href: "https://github.com/jordankalebpage/next-geo-invoice",
   },
   {
@@ -122,7 +127,8 @@ export const resumeProjects: ResumeProject[] = [
   },
   {
     name: "Anime Remove Torrenter Name and Hash",
-    description: "Go script that strips release group names and hashes from anime filenames.",
+    description:
+      "Go script that strips release group names and hashes from anime filenames.",
     href: "https://github.com/jordankalebpage/anime-remove-torrenter-name-thing",
   },
 ];
