@@ -135,9 +135,9 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-(--border-subtle) bg-(--surface-header) backdrop-blur">
-      <div className="mx-auto flex w-full max-w-5xl items-center justify-end px-4 py-3 sm:px-6">
-        <nav aria-label="Primary" className="flex items-center gap-2">
+    <header className="fixed left-1/2 top-4 z-50 w-full max-w-fit -translate-x-1/2 px-4 transition-all sm:top-6">
+      <div className="flex items-center justify-between gap-4 rounded-full border border-(--border-subtle) bg-(--surface-header) px-4 py-2 shadow-sm backdrop-blur-md">
+        <nav aria-label="Primary" className="flex items-center gap-1 sm:gap-2">
           {navItems.map((item) => {
             const isActive =
               item.href === "/"
@@ -148,7 +148,7 @@ export function Header() {
               <Link
                 key={item.href}
                 aria-current={isActive ? "page" : undefined}
-                className={`rounded-md px-3 py-2 text-sm transition-colors ${
+                className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
                   isActive
                     ? "bg-(--surface-active) text-(--text-primary)"
                     : "text-(--text-secondary) hover:bg-(--surface-hover) hover:text-(--text-primary)"
@@ -160,9 +160,11 @@ export function Header() {
             );
           })}
 
+          <div className="mx-2 h-4 w-px bg-(--border-subtle)"></div>
+
           <button
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className="group relative flex size-9 items-center justify-center rounded-full border border-(--border-subtle) bg-(--surface-card) text-(--text-secondary) shadow-[0_1px_10px_rgb(0_0_0/0.1)] transition-all hover:border-(--accent-border) hover:text-(--text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)"
+            className="group relative flex size-8 items-center justify-center cursor-pointer rounded-full bg-(--surface-active) text-(--text-secondary) transition-all hover:bg-(--surface-hover) hover:text-(--text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)"
             onClick={toggleTheme}
             type="button"
           >

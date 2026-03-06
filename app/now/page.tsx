@@ -22,28 +22,30 @@ export const metadata: Metadata = {
 
 export default function NowPage() {
   return (
-    <section className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6">
-      <h1 className="text-3xl font-semibold tracking-tight text-(--text-primary)">
-        Now
-      </h1>
+    <section className="mx-auto w-full max-w-4xl px-4 py-24 sm:px-6 sm:py-32">
+      <div className="rounded-3xl border border-(--border-subtle) bg-(--surface-card) p-8 shadow-sm backdrop-blur-sm sm:p-12 transition-all">
+        <h1 className="text-4xl font-extrabold tracking-tight text-(--text-primary) sm:text-5xl">
+          Now
+        </h1>
 
-      <p className="mt-4 max-w-2xl text-(--text-secondary)">
-        This page is meant to show what I&apos;m currently working on/learning
-        about. As of now, I&apos;m following along with the &quot;PyTorch for
-        Deep Learning & Machine Learning - Full Course&quot; course on YouTube
-        (25 hours of content!)
-      </p>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-(--text-secondary)">
+          This page is meant to show what I&apos;m currently working on/learning
+          about. As of now, I&apos;m following along with the &quot;PyTorch for
+          Deep Learning & Machine Learning - Full Course&quot; course on YouTube
+          (25 hours of content!)
+        </p>
 
-      <div className="mt-6 overflow-hidden rounded-xl border border-(--border-subtle) bg-(--surface-card)">
-        <div className="aspect-video w-full">
-          <iframe
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            className="h-full w-full"
-            referrerPolicy="strict-origin-when-cross-origin"
-            src="https://www.youtube.com/embed/V_xro1bcAuA?si=p0Sc6iFTw-pQu1Ud"
-            title="PyTorch for Deep Learning & Machine Learning Full Course"
-          />
+        <div className="mt-10 overflow-hidden rounded-2xl border border-(--border-subtle) bg-(--surface-header) shadow-lg transition-all hover:border-(--accent-border) hover:shadow-(--accent-hover-bg)">
+          <div className="aspect-video w-full">
+            <iframe
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="h-full w-full"
+              referrerPolicy="strict-origin-when-cross-origin"
+              src="https://www.youtube.com/embed/V_xro1bcAuA?si=p0Sc6iFTw-pQu1Ud"
+              title="PyTorch for Deep Learning & Machine Learning Full Course"
+            />
+          </div>
         </div>
       </div>
     </section>

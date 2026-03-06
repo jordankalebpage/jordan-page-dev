@@ -2,11 +2,11 @@ import Link from "next/link";
 import { experience, resumeProjects, skillGroups } from "./content";
 
 const sectionClass =
-  "mt-8 rounded-xl border border-[var(--border-subtle)] bg-[var(--surface-card)] p-6 sm:p-8";
+  "mt-8 rounded-3xl border border-(--border-subtle) bg-(--surface-card) p-6 sm:p-10 shadow-sm backdrop-blur-sm transition-all";
 const linkPillClass =
-  "inline-flex items-center gap-1 rounded-md border border-[var(--accent-border)] px-3 py-2 text-[var(--accent)] transition-colors hover:bg-[var(--accent-hover-bg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--focus-ring-offset)]";
+  "inline-flex items-center gap-1.5 rounded-full border border-(--accent-border) px-4 py-2 text-sm font-medium text-(--accent) transition-all hover:bg-(--accent) hover:text-white dark:hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset) hover:-translate-y-0.5 active:translate-y-0";
 const sectionJumpLinkClass =
-  "rounded-md border border-[var(--border-subtle)] px-3 py-2 text-sm text-[var(--text-secondary)] transition-colors hover:border-[var(--border-strong)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--focus-ring-offset)]";
+  "rounded-full border border-(--border-subtle) bg-(--surface-active) px-4 py-2 text-sm font-medium text-(--text-secondary) transition-all hover:border-(--border-strong) hover:bg-(--surface-hover) hover:text-(--text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset) hover:-translate-y-0.5 active:translate-y-0";
 
 function LinkedInIcon() {
   return (
@@ -42,22 +42,23 @@ function GitHubIcon() {
 
 export default function Home() {
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
-      <section className="rounded-xl border border-(--border-subtle) bg-(--surface-card) p-6 sm:p-8">
-        <p className="text-sm uppercase tracking-[0.18em] text-(--text-muted)">
+    <div className="mx-auto w-full max-w-4xl px-4 py-24 sm:px-6 sm:py-32">
+      <section className="relative overflow-hidden rounded-3xl border border-(--border-subtle) bg-(--surface-card) p-8 shadow-sm backdrop-blur-sm sm:p-12 transition-all">
+        <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-(--accent) opacity-20 blur-3xl"></div>
+        <p className="relative text-sm font-semibold uppercase tracking-[0.2em] text-(--accent)">
           Full Stack Developer
         </p>
-        <h1 className="mt-2 text-4xl font-bold tracking-tight text-(--text-primary) sm:text-5xl">
+        <h1 className="relative mt-3 text-5xl font-extrabold tracking-tight text-(--text-primary) sm:text-6xl md:text-7xl">
           Jordan Page
         </h1>
         <a
           href="mailto:jp@jordanpage.dev"
-          className="text-sm justify-center tracking-[0.18em] text-(--text-muted) hover:text-(--text-primary)"
+          className="relative mt-2 inline-block text-sm font-medium tracking-wide text-(--text-muted) transition-colors hover:text-(--accent)"
         >
           jp@jordanpage.dev
         </a>
 
-        <p className="mt-6 max-w-3xl text-(--text-secondary)">
+        <p className="relative mt-8 max-w-2xl text-lg leading-relaxed text-(--text-secondary)">
           Full Stack Developer with 4 years of enterprise experience building
           React/.NET applications for clients including Lawrence Livermore
           National Laboratory and the US Army Corps of Engineers. Proven track
@@ -65,8 +66,8 @@ export default function Home() {
           automating processes, and performing data analytics.
         </p>
 
-        <nav aria-label="Jump to section" className="mt-6">
-          <ul className="flex flex-wrap gap-2">
+        <nav aria-label="Jump to section" className="relative mt-10">
+          <ul className="flex flex-wrap gap-3">
             <li>
               <a className={sectionJumpLinkClass} href="#skills">
                 Skills
@@ -119,20 +120,20 @@ export default function Home() {
       </section>
 
       <section id="skills" className={sectionClass}>
-        <h2 className="text-2xl font-semibold tracking-tight text-(--text-primary)">
+        <h2 className="text-3xl font-bold tracking-tight text-(--text-primary)">
           Skills
         </h2>
 
-        <dl className="mt-6 grid gap-4 sm:grid-cols-2">
+        <dl className="mt-8 grid gap-4 sm:grid-cols-2">
           {skillGroups.map((group) => (
             <div
               key={group.label}
-              className="rounded-lg border border-(--border-subtle) p-4"
+              className="group rounded-2xl border border-(--border-subtle) bg-(--surface-header) p-5 transition-all hover:-translate-y-1 hover:border-(--accent-border) hover:shadow-md hover:shadow-(--accent-hover-bg)"
             >
-              <dt className="text-sm font-semibold text-(--text-strong)">
+              <dt className="text-sm font-bold text-(--text-strong) group-hover:text-(--accent)">
                 {group.label}
               </dt>
-              <dd className="mt-2 text-sm leading-6 text-(--text-secondary)">
+              <dd className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
                 {group.value}
               </dd>
             </div>
@@ -141,30 +142,35 @@ export default function Home() {
       </section>
 
       <section id="experience" className={sectionClass}>
-        <h2 className="text-2xl font-semibold tracking-tight text-(--text-primary)">
+        <h2 className="text-3xl font-bold tracking-tight text-(--text-primary)">
           Professional Experience
         </h2>
 
-        <div className="mt-6 space-y-5">
+        <div className="mt-8 space-y-6">
           {experience.map((role) => (
             <article
               key={`${role.company}-${role.title}`}
-              className="rounded-lg border border-(--border-subtle) p-5"
+              className="group rounded-2xl border border-(--border-subtle) bg-(--surface-header) p-6 transition-all hover:border-(--border-strong) hover:shadow-sm"
             >
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="text-lg font-semibold text-(--text-primary)">
+                <h3 className="text-xl font-bold text-(--text-primary) group-hover:text-(--accent)">
                   {role.title}
                 </h3>
-                <p className="text-sm text-(--text-muted)">{role.period}</p>
+                <span className="inline-flex w-fit items-center rounded-full bg-(--surface-active) px-3 py-1 text-xs font-medium text-(--text-secondary)">
+                  {role.period}
+                </span>
               </div>
 
-              <p className="mt-1 text-sm text-(--text-secondary)">
+              <p className="mt-3 text-base font-medium text-(--text-strong)">
                 {role.company}
               </p>
 
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-(--text-secondary)">
+              <ul className="mt-4 list-none space-y-3 text-sm leading-relaxed text-(--text-secondary)">
                 {role.highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
+                  <li key={highlight} className="relative pl-6">
+                    <span className="absolute left-0 top-2 h-1.5 w-1.5 rounded-full bg-(--accent-border) group-hover:bg-(--accent)"></span>
+                    {highlight}
+                  </li>
                 ))}
               </ul>
             </article>
@@ -173,37 +179,40 @@ export default function Home() {
       </section>
 
       <section id="selected-projects" className={sectionClass}>
-        <h2 className="text-2xl font-semibold tracking-tight text-(--text-primary)">
+        <h2 className="text-3xl font-bold tracking-tight text-(--text-primary)">
           Selected Projects
         </h2>
-        <p className="mt-3 text-sm text-(--text-secondary)">
+        <p className="mt-4 text-base leading-relaxed text-(--text-secondary)">
           These highlight real-world work and utilities. For dedicated
           React/Next.js showcase builds, visit the Projects page.
         </p>
-        <div className="mt-4">
+        <div className="mt-6">
           <Link
-            className="inline-flex rounded-md border border-(--accent-border) px-3 py-2 text-sm font-medium text-(--accent) transition-colors hover:bg-(--accent-hover-bg) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)"
+            className="inline-flex items-center gap-2 rounded-full border border-(--accent-border) bg-(--accent-hover-bg) px-5 py-2.5 text-sm font-semibold text-(--accent) transition-all hover:bg-(--accent) hover:text-white dark:hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset) hover:-translate-y-0.5"
             href="/projects"
           >
             Explore React and Next.js Showcase
+            <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {resumeProjects.map((project) => (
             <article
               key={project.name}
-              className="rounded-lg border border-(--border-subtle) p-4"
+              className="group flex flex-col justify-between rounded-2xl border border-(--border-subtle) bg-(--surface-header) p-6 transition-all hover:-translate-y-1 hover:border-(--accent-border) hover:shadow-md hover:shadow-(--accent-hover-bg)"
             >
-              <h3 className="text-base font-semibold text-(--text-primary)">
-                {project.name}
-              </h3>
-              <p className="mt-2 text-sm leading-6 text-(--text-secondary)">
-                {project.description}
-              </p>
+              <div>
+                <h3 className="text-lg font-bold text-(--text-primary) group-hover:text-(--accent)">
+                  {project.name}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-(--text-secondary)">
+                  {project.description}
+                </p>
+              </div>
               <a
                 aria-label={`${project.name} repository (opens in new tab)`}
-                className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-(--accent) transition-colors hover:text-(--accent-hover) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)"
+                className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-(--surface-active) px-4 py-2 text-sm font-semibold text-(--accent) transition-all hover:bg-(--accent) hover:text-white dark:hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)"
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -217,20 +226,28 @@ export default function Home() {
       </section>
 
       <section id="education" className={sectionClass}>
-        <h2 className="text-2xl font-semibold tracking-tight text-(--text-primary)">
+        <h2 className="text-3xl font-bold tracking-tight text-(--text-primary)">
           Education
         </h2>
-        <p className="mt-4 text-(--text-strong)">
-          Bachelor of Science in Computer Science
-        </p>
-        <p className="mt-1 text-sm text-(--text-secondary)">
-          Saint Vincent College, Latrobe, PA | Graduated: May 2018
-        </p>
-        <p className="mt-4 text-sm leading-6 text-(--text-secondary)">
-          Relevant coursework: Applied Cryptography, Data Communications,
-          Server-Side Programming, Computer Architecture, Software Engineering,
-          Database Concepts, Data Structures.
-        </p>
+        <div className="mt-8 rounded-2xl border border-(--border-subtle) bg-(--surface-header) p-6 sm:p-8">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <h3 className="text-xl font-bold text-(--text-strong)">
+              Bachelor of Science in Computer Science
+            </h3>
+            <span className="inline-flex w-fit items-center rounded-full bg-(--surface-active) px-3 py-1 text-xs font-medium text-(--text-secondary)">
+              Graduated: May 2018
+            </span>
+          </div>
+          <p className="mt-3 text-base font-medium text-(--accent)">
+            Saint Vincent College, Latrobe, PA
+          </p>
+          <p className="mt-4 text-sm leading-relaxed text-(--text-secondary)">
+            <strong className="text-(--text-strong)">Relevant coursework:</strong>{" "}
+            Applied Cryptography, Data Communications, Server-Side Programming,
+            Computer Architecture, Software Engineering, Database Concepts, Data
+            Structures.
+          </p>
+        </div>
       </section>
     </div>
   );
