@@ -6,7 +6,7 @@ const sectionClass =
 const linkPillClass =
   "inline-flex items-center gap-1.5 rounded-full border border-(--accent-border) px-4 py-2 text-sm font-medium text-(--accent) transition-all hover:bg-(--accent) hover:text-white dark:hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset) hover:-translate-y-0.5 active:translate-y-0";
 const sectionJumpLinkClass =
-  "rounded-full border border-(--border-subtle) bg-(--surface-active) px-4 py-2 text-sm font-medium text-(--text-secondary) transition-all hover:border-(--border-strong) hover:bg-(--surface-hover) hover:text-(--text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset) hover:-translate-y-0.5 active:translate-y-0";
+  "inline-flex items-center justify-center rounded-full border border-(--border-subtle) bg-(--surface-active) px-4 py-2 text-sm font-medium text-(--text-secondary) transition-all hover:border-(--border-strong) hover:bg-(--surface-hover) hover:text-(--text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset) hover:-translate-y-0.5 active:translate-y-0";
 
 function LinkedInIcon() {
   return (
@@ -67,7 +67,7 @@ export default function Home() {
         </p>
 
         <nav aria-label="Jump to section" className="relative mt-10">
-          <ul className="flex flex-wrap gap-3">
+          <ul className="flex flex-wrap gap-x-3 gap-y-4 sm:gap-3">
             <li>
               <a className={sectionJumpLinkClass} href="#skills">
                 Skills
@@ -128,7 +128,7 @@ export default function Home() {
           {skillGroups.map((group) => (
             <div
               key={group.label}
-              className="group rounded-2xl border border-(--border-subtle) bg-(--surface-header) p-5 transition-all hover:-translate-y-1 hover:border-(--accent-border) hover:shadow-md hover:shadow-(--accent-hover-bg)"
+              className="group rounded-2xl border border-(--border-subtle) bg-(--surface-header) p-5 transition-all hover:-translate-y-1 hover:border-(--accent-border) hover:shadow-md"
             >
               <dt className="text-sm font-bold text-(--text-strong) group-hover:text-(--accent)">
                 {group.label}
@@ -200,7 +200,7 @@ export default function Home() {
           {resumeProjects.map((project) => (
             <article
               key={project.name}
-              className="group flex flex-col justify-between rounded-2xl border border-(--border-subtle) bg-(--surface-header) p-6 transition-all hover:-translate-y-1 hover:border-(--accent-border) hover:shadow-md hover:shadow-(--accent-hover-bg)"
+              className="group flex flex-col justify-between rounded-2xl border border-(--border-subtle) bg-(--surface-header) p-6 transition-all hover:-translate-y-1 hover:border-(--accent-border) hover:shadow-md"
             >
               <div>
                 <h3 className="text-lg font-bold text-(--text-primary) group-hover:text-(--accent)">
@@ -242,7 +242,9 @@ export default function Home() {
             Saint Vincent College, Latrobe, PA
           </p>
           <p className="mt-4 text-sm leading-relaxed text-(--text-secondary)">
-            <strong className="text-(--text-strong)">Relevant coursework:</strong>{" "}
+            <strong className="text-(--text-strong)">
+              Relevant coursework:
+            </strong>{" "}
             Applied Cryptography, Data Communications, Server-Side Programming,
             Computer Architecture, Software Engineering, Database Concepts, Data
             Structures.
