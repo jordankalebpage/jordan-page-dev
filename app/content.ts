@@ -102,6 +102,12 @@ export const experience: ExperienceRole[] = [
 
 export const resumeProjects: ResumeProject[] = [
   {
+    name: "Go Real-Time Chat App",
+    description:
+      "A real-time chat application built with Go and WebSocket technology.",
+    href: "https://github.com/jordankalebpage/go-chat",
+  },
+  {
     name: "Student Account Management System",
     description:
       "Automated account creation and deletion workflows for a school district using Python.",

@@ -183,15 +183,14 @@ export default function Home() {
           Selected Projects
         </h2>
         <p className="mt-4 text-base leading-relaxed text-(--text-secondary)">
-          These highlight real-world work and utilities. For dedicated
-          React/Next.js showcase builds, visit the Projects page.
+          These highlight real-world work and utilities.
         </p>
         <div className="mt-6">
           <Link
             className="inline-flex items-center gap-2 rounded-full border border-(--accent-border) bg-(--accent-hover-bg) px-5 py-2.5 text-sm font-semibold text-(--accent) transition-all hover:bg-(--accent) hover:text-white dark:hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset) hover:-translate-y-0.5"
             href="/projects"
           >
-            Explore React and Next.js Showcase
+            Explore Showcase
             <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
