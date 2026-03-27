@@ -136,7 +136,7 @@ export function Header() {
 
   return (
     <header className="fixed left-1/2 top-4 z-50 w-full max-w-fit -translate-x-1/2 px-4 transition-all sm:top-6">
-      <div className="flex items-center justify-between gap-4 rounded-full border border-(--border-subtle) bg-(--surface-header) px-4 py-2 shadow-sm backdrop-blur-md">
+      <div className="flex items-center justify-between gap-4 rounded-full border border-(--border-subtle) bg-(--surface-header) px-4 py-2 shadow-sm backdrop-blur-xl">
         <nav aria-label="Primary" className="flex items-center gap-1 sm:gap-2">
           {navItems.map((item) => {
             const isActive =

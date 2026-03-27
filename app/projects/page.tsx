@@ -24,16 +24,14 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <section className="mx-auto w-full max-w-4xl px-4 py-24 sm:px-6 sm:py-32">
-      <div className="rounded-3xl border border-(--border-subtle) bg-(--surface-card) p-8 shadow-sm backdrop-blur-sm sm:p-12 transition-all">
-        <h1 className="text-4xl font-extrabold tracking-tight text-(--text-primary) sm:text-5xl">
-          Projects
-        </h1>
+    <section className="mx-auto w-full max-w-4xl px-6 py-24 sm:py-32">
+      <h1 className="font-serif text-4xl italic tracking-tight text-(--text-primary) sm:text-5xl">
+        Projects
+      </h1>
 
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-(--text-secondary)">
-          This page will be updated with my latest projects and experiments.
-        </p>
-      </div>
+      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-(--text-secondary)">
+        This page will be updated with my latest projects and experiments.
+      </p>
     </section>
   );
 }

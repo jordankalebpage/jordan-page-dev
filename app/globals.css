@@ -2,69 +2,79 @@
 
 :root {
   color-scheme: dark;
-  --background: #09090b;
-  --foreground: #f4f4f5;
-  --surface-header: rgb(24 24 27 / 0.8);
-  --surface-card: rgb(24 24 27 / 0.4);
-  --surface-active: #27272a;
-  --surface-hover: #27272a;
-  --border-subtle: rgb(255 255 255 / 0.1);
-  --border-strong: #52525b;
-  --text-primary: #f8fafc;
+  --background: #0c0a09;
+  --foreground: #e7e5e4;
+
+  --surface-header: rgb(28 25 23 / 0.85);
+  --surface-card: rgb(28 25 23 / 0.5);
+  --surface-active: #1c1917;
+  --surface-hover: #292524;
+
+  --border-subtle: rgb(255 255 255 / 0.07);
+  --border-strong: #57534e;
+
+  --text-primary: #fafaf9;
   --text-strong: #ffffff;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
-  --accent: #818cf8;
-  --accent-hover: #a5b4fc;
-  --accent-border: rgb(129 140 248 / 0.4);
-  --accent-hover-bg: rgb(129 140 248 / 0.15);
-  --focus-ring: #818cf8;
-  --focus-ring-offset: #09090b;
-  --skip-link-bg: #818cf8;
-  --skip-link-text: #09090b;
+  --text-secondary: #a8a29e;
+  --text-muted: #78716c;
+
+  --accent: #e8734a;
+  --accent-hover: #f09070;
+  --accent-border: rgb(232 115 74 / 0.3);
+  --accent-hover-bg: rgb(232 115 74 / 0.1);
+
+  --focus-ring: #e8734a;
+  --focus-ring-offset: #0c0a09;
+  --skip-link-bg: #e8734a;
+  --skip-link-text: #0c0a09;
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --surface-header: rgb(255 255 255 / 0.85);
+  --background: #faf7f4;
+  --foreground: #1c1917;
+
+  --surface-header: rgb(255 255 255 / 0.88);
   --surface-card: #ffffff;
-  --surface-active: #f1f5f9;
-  --surface-hover: #e2e8f0;
-  --border-subtle: rgb(15 23 42 / 0.1);
-  --border-strong: #94a3b8;
-  --text-primary: #0f172a;
-  --text-strong: #020617;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --accent: #4f46e5;
-  --accent-hover: #6366f1;
-  --accent-border: rgb(79 70 229 / 0.3);
-  --accent-hover-bg: rgb(79 70 229 / 0.1);
-  --focus-ring: #4f46e5;
-  --focus-ring-offset: #f8fafc;
-  --skip-link-bg: #4f46e5;
+  --surface-active: #f5f0eb;
+  --surface-hover: #ebe5de;
+
+  --border-subtle: rgb(28 25 23 / 0.08);
+  --border-strong: #a8a29e;
+
+  --text-primary: #1c1917;
+  --text-strong: #0c0a09;
+  --text-secondary: #57534e;
+  --text-muted: #78716c;
+
+  --accent: #c85a36;
+  --accent-hover: #b04e2e;
+  --accent-border: rgb(200 90 54 / 0.25);
+  --accent-hover-bg: rgb(200 90 54 / 0.06);
+
+  --focus-ring: #c85a36;
+  --focus-ring-offset: #faf7f4;
+  --skip-link-bg: #c85a36;
   --skip-link-text: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-plus-jakarta);
+  --font-mono: var(--font-jetbrains);
+  --font-serif: var(--font-instrument);
 }
 
 body {
   min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), sans-serif;
-  background-image: radial-gradient(
-    circle at 50% 0%,
-    var(--accent-hover-bg) 0%,
-    transparent 70%
+  font-family: var(--font-plus-jakarta), sans-serif;
+  background-image: linear-gradient(
+    180deg,
+    var(--accent-hover-bg),
+    transparent 50vh
   );
   background-attachment: fixed;
 }
-
