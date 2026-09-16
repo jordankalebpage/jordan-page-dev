@@ -2,10 +2,29 @@ import Link from "next/link";
 import { experience, resumeProjects, skillGroups } from "./content";
 
 const jumpLinkClass =
-  "inline-flex items-center rounded-full border border-(--border-subtle) px-4 py-2 text-sm font-medium text-(--text-secondary) transition-all hover:border-(--accent-border) hover:text-(--accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)";
+  "inline-flex items-center border-b border-(--border-strong) py-1 font-mono text-xs font-medium uppercase tracking-[0.14em] text-(--text-secondary) transition-colors hover:border-(--accent) hover:text-(--accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)";
 
 const socialLinkClass =
-  "inline-flex items-center gap-1.5 rounded-full border border-(--accent-border) px-4 py-2 text-sm font-medium text-(--accent) transition-all hover:bg-(--accent) hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset) hover:-translate-y-0.5 active:translate-y-0";
+  "inline-flex items-center justify-between gap-6 border border-(--border-strong) px-4 py-3 font-mono text-xs font-medium uppercase tracking-[0.12em] text-(--text-primary) transition-colors hover:border-(--accent) hover:bg-(--accent) hover:text-(--accent-contrast) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)";
+
+function SectionHeading({
+  index,
+  children,
+}: Readonly<{
+  index: string;
+  children: React.ReactNode;
+}>) {
+  return (
+    <div className="flex items-end gap-4 border-b border-(--border-strong) pb-4">
+      <span className="font-mono text-xs text-(--accent)" aria-hidden="true">
+        {index}
+      </span>
+      <h2 className="text-3xl font-semibold uppercase tracking-[-0.04em] text-(--text-primary) sm:text-4xl">
+        {children}
+      </h2>
+    </div>
+  );
+}
 
 function LinkedInIcon() {
   return (
@@ -41,24 +60,39 @@ function GitHubIcon() {
 
 export default function Home() {
   return (
-    <div className="mx-auto w-full max-w-4xl px-6 py-24 sm:py-32">
-      <section>
-        <p className="font-mono text-xs uppercase tracking-[0.25em] text-(--accent)">
-          Full Stack Developer
-        </p>
+    <div className="mx-auto w-full max-w-6xl border-x border-(--border-subtle) px-5 py-28 sm:px-8 sm:py-36 lg:px-12">
+      <section className="relative">
+        <div className="grid gap-10 lg:grid-cols-[1fr_18rem] lg:items-end">
+          <div>
+            <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-(--accent)">
+              <span className="size-2 bg-(--accent)" aria-hidden="true" />
+              Full Stack Developer
+            </p>
 
-        <h1 className="mt-4 font-serif text-5xl italic tracking-tight text-(--text-primary) sm:text-6xl md:text-7xl lg:text-8xl">
-          Jordan Page
-        </h1>
+            <h1 className="mt-7 max-w-4xl text-[clamp(4.5rem,14vw,10.5rem)] font-semibold leading-[0.78] tracking-[-0.085em] text-(--text-primary)">
+              Jordan
+              <br />
+              Page
+            </h1>
+          </div>
 
-        <a
-          href="mailto:jp@jordanpage.dev"
-          className="mt-3 inline-block font-mono text-sm text-(--text-muted) transition-colors hover:text-(--accent)"
-        >
-          jp@jordanpage.dev
-        </a>
+          <div className="border-t border-(--border-strong) pt-5 lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0">
+            <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-(--text-muted)">
+              Profile / 2026
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-(--text-secondary)">
+              I build dependable software for complex, real-world systems.
+            </p>
+            <a
+              href="mailto:jp@jordanpage.dev"
+              className="mt-5 inline-block font-mono text-xs text-(--text-primary) underline decoration-(--accent) decoration-2 underline-offset-4 transition-colors hover:text-(--accent)"
+            >
+              jp@jordanpage.dev
+            </a>
+          </div>
+        </div>
 
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-(--text-secondary)">
+        <p className="mt-14 max-w-3xl border-l-4 border-(--accent) pl-5 text-lg leading-relaxed text-(--text-secondary) sm:text-xl">
           Full Stack Developer with 4 years of enterprise experience building
           React/.NET applications for clients including Lawrence Livermore
           National Laboratory and the US Army Corps of Engineers. Proven track
@@ -67,7 +101,7 @@ export default function Home() {
         </p>
 
         <nav aria-label="Jump to section" className="mt-10">
-          <ul className="flex flex-wrap gap-3">
+          <ul className="flex flex-wrap gap-x-6 gap-y-3">
             <li>
               <a className={jumpLinkClass} href="#skills">
                 Skills
@@ -91,7 +125,7 @@ export default function Home() {
           </ul>
         </nav>
 
-        <ul className="mt-6 flex flex-wrap gap-3">
+        <ul className="mt-10 flex flex-wrap gap-3">
           <li>
             <a
               aria-label="LinkedIn (opens in new tab)"
@@ -119,21 +153,22 @@ export default function Home() {
         </ul>
       </section>
 
-      <hr className="my-16 border-t border-(--border-subtle)" />
+      <hr className="my-20 border-t border-(--border-subtle) sm:my-28" />
 
       <section id="skills">
-        <h2 className="text-2xl font-bold tracking-tight text-(--text-primary)">
-          Skills
-        </h2>
+        <SectionHeading index="01">Skills</SectionHeading>
 
-        <dl className="mt-8 grid gap-3 sm:grid-cols-2">
-          {skillGroups.map((group) => (
+        <dl className="mt-8 grid border-l border-t border-(--border-subtle) sm:grid-cols-2">
+          {skillGroups.map((group, index) => (
             <div
               key={group.label}
-              className="rounded-xl bg-(--surface-card) p-5 transition-colors hover:bg-(--surface-hover)"
+              className="group border-b border-r border-(--border-subtle) bg-(--surface-card) p-5 transition-colors hover:bg-(--surface-hover)"
             >
-              <dt className="font-mono text-xs font-medium uppercase tracking-wider text-(--accent)">
-                {group.label}
+              <dt className="flex items-center justify-between font-mono text-xs font-medium uppercase tracking-wider text-(--accent)">
+                <span>{group.label}</span>
+                <span className="text-(--text-muted)" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </dt>
               <dd className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
                 {group.value}
@@ -143,51 +178,53 @@ export default function Home() {
         </dl>
       </section>
 
-      <hr className="my-16 border-t border-(--border-subtle)" />
+      <hr className="my-20 border-t border-(--border-subtle) sm:my-28" />
 
       <section id="experience">
-        <h2 className="text-2xl font-bold tracking-tight text-(--text-primary)">
-          Experience
-        </h2>
+        <SectionHeading index="02">Experience</SectionHeading>
 
-        <div className="mt-8 space-y-8">
-          {experience.map((role) => (
+        <div className="mt-3">
+          {experience.map((role, index) => (
             <article
               key={`${role.company}-${role.title}`}
-              className="group border-l-2 border-(--border-subtle) pl-6 transition-colors hover:border-(--accent)"
+              className="group grid gap-5 border-b border-(--border-subtle) py-8 sm:grid-cols-[9rem_1fr] sm:gap-8"
             >
-              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                <h3 className="text-lg font-bold text-(--text-primary)">
-                  {role.title}
-                </h3>
-                <span className="font-mono text-xs text-(--text-muted)">
-                  {role.period}
+              <div>
+                <span className="font-mono text-xs text-(--accent)">
+                  {String(index + 1).padStart(2, "0")} /
                 </span>
+                <p className="mt-3 font-mono text-[0.65rem] uppercase leading-relaxed tracking-wider text-(--text-muted)">
+                  {role.period}
+                </p>
               </div>
 
-              <p className="mt-1 text-sm font-medium text-(--accent)">
-                {role.company}
-              </p>
+              <div>
+                <h3 className="text-xl font-semibold tracking-tight text-(--text-primary) sm:text-2xl">
+                  {role.title}
+                </h3>
 
-              <ul className="mt-4 space-y-2 text-sm leading-relaxed text-(--text-secondary)">
-                {role.highlights.map((highlight) => (
-                  <li key={highlight} className="relative pl-4">
-                    <span className="absolute left-0 top-[0.6em] h-1 w-1 rounded-full bg-(--text-muted)"></span>
-                    {highlight}
-                  </li>
-                ))}
-              </ul>
+                <p className="mt-1 font-mono text-xs font-medium uppercase tracking-wider text-(--accent)">
+                  {role.company}
+                </p>
+
+                <ul className="mt-5 space-y-3 text-sm leading-relaxed text-(--text-secondary)">
+                  {role.highlights.map((highlight) => (
+                    <li key={highlight} className="relative pl-5">
+                      <span className="absolute left-0 top-[0.65em] h-px w-2 bg-(--border-strong)" />
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </article>
           ))}
         </div>
       </section>
 
-      <hr className="my-16 border-t border-(--border-subtle)" />
+      <hr className="my-20 border-t border-(--border-subtle) sm:my-28" />
 
       <section id="selected-projects">
-        <h2 className="text-2xl font-bold tracking-tight text-(--text-primary)">
-          Selected Projects
-        </h2>
+        <SectionHeading index="03">Selected Projects</SectionHeading>
 
         <p className="mt-4 text-base leading-relaxed text-(--text-secondary)">
           These highlight real-world work and utilities.
@@ -195,7 +232,7 @@ export default function Home() {
 
         <div className="mt-6">
           <Link
-            className="inline-flex items-center gap-2 rounded-full bg-(--accent) px-5 py-2.5 text-sm font-semibold text-white transition-all hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset) hover:-translate-y-0.5 active:translate-y-0"
+            className="inline-flex items-center gap-8 bg-(--accent) px-5 py-3 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-(--accent-contrast) transition-colors hover:bg-(--accent-hover) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)"
             href="/projects"
           >
             Explore Showcase
@@ -203,14 +240,17 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2">
-          {resumeProjects.map((project) => (
+        <div className="mt-8 grid border-l border-t border-(--border-subtle) sm:grid-cols-2">
+          {resumeProjects.map((project, index) => (
             <article
               key={project.name}
-              className="group flex flex-col justify-between rounded-xl bg-(--surface-card) p-6 transition-colors hover:bg-(--surface-active)"
+              className="group flex min-h-56 flex-col justify-between border-b border-r border-(--border-subtle) bg-(--surface-card) p-6 transition-colors hover:bg-(--surface-active)"
             >
               <div>
-                <h3 className="font-bold text-(--text-primary) transition-colors group-hover:text-(--accent)">
+                <span className="font-mono text-[0.65rem] text-(--text-muted)">
+                  P-{String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-8 text-lg font-semibold tracking-tight text-(--text-primary) transition-colors group-hover:text-(--accent)">
                   {project.name}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
@@ -220,7 +260,7 @@ export default function Home() {
 
               <a
                 aria-label={`${project.name} repository (opens in new tab)`}
-                className="mt-5 inline-flex w-fit items-center gap-2 font-mono text-xs font-medium text-(--accent) transition-colors hover:text-(--accent-hover)"
+                className="mt-5 inline-flex w-fit items-center gap-2 border-b border-(--accent-border) pb-1 font-mono text-xs font-medium uppercase tracking-wider text-(--accent) transition-colors hover:border-(--accent) hover:text-(--accent-hover)"
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -233,14 +273,12 @@ export default function Home() {
         </div>
       </section>
 
-      <hr className="my-16 border-t border-(--border-subtle)" />
+      <hr className="my-20 border-t border-(--border-subtle) sm:my-28" />
 
       <section id="education">
-        <h2 className="text-2xl font-bold tracking-tight text-(--text-primary)">
-          Education
-        </h2>
+        <SectionHeading index="04">Education</SectionHeading>
 
-        <div className="mt-8 border-l-2 border-(--accent-border) pl-6">
+        <div className="mt-8 border-l-4 border-(--accent) bg-(--surface-card) p-6 sm:p-8">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
             <h3 className="text-lg font-bold text-(--text-strong)">
               Bachelor of Science in Computer Science

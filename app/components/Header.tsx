@@ -135,9 +135,17 @@ export function Header() {
   };
 
   return (
-    <header className="fixed left-1/2 top-4 z-50 w-full max-w-fit -translate-x-1/2 px-4 transition-all sm:top-6">
-      <div className="flex items-center justify-between gap-4 rounded-full border border-(--border-subtle) bg-(--surface-header) px-4 py-2 shadow-sm backdrop-blur-xl">
-        <nav aria-label="Primary" className="flex items-center gap-1 sm:gap-2">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-(--border-subtle) bg-(--surface-header) backdrop-blur-xl">
+      <div className="mx-auto flex w-full max-w-6xl items-stretch justify-between border-x border-(--border-subtle)">
+        <Link
+          aria-label="Jordan Page home"
+          className="flex items-center border-r border-(--border-subtle) px-5 font-mono text-xs font-semibold tracking-[0.18em] text-(--text-primary) transition-colors hover:bg-(--surface-hover) hover:text-(--accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--focus-ring) sm:px-8"
+          href="/"
+        >
+          JP
+        </Link>
+
+        <nav aria-label="Primary" className="flex items-stretch">
           {navItems.map((item) => {
             const isActive =
               item.href === "/"
@@ -148,11 +156,11 @@ export function Header() {
               <Link
                 key={item.href}
                 aria-current={isActive ? "page" : undefined}
-                className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                className={`relative flex items-center px-3 py-5 font-mono text-[0.65rem] font-medium uppercase tracking-wider transition-colors sm:px-5 ${
                   isActive
-                    ? "bg-(--surface-active) text-(--text-primary)"
+                    ? "bg-(--surface-active) text-(--accent) after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-(--accent) sm:after:inset-x-5"
                     : "text-(--text-secondary) hover:bg-(--surface-hover) hover:text-(--text-primary)"
-                } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)`}
+                } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--focus-ring)`}
                 href={item.href}
               >
                 {item.label}
@@ -160,11 +168,9 @@ export function Header() {
             );
           })}
 
-          <div className="mx-2 h-4 w-px bg-(--border-subtle)"></div>
-
           <button
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className="group relative flex size-8 items-center justify-center cursor-pointer rounded-full bg-(--surface-active) text-(--text-secondary) transition-all hover:bg-(--surface-hover) hover:text-(--text-primary) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)"
+            className="group relative flex w-12 cursor-pointer items-center justify-center border-l border-(--border-subtle) bg-(--surface-active) text-(--text-secondary) transition-colors hover:bg-(--accent) hover:text-(--accent-contrast) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--focus-ring) sm:w-16"
             onClick={toggleTheme}
             type="button"
           >
