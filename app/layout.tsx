@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, IBM_Plex_Mono } from "next/font/google";
+import { DM_Mono, Instrument_Serif, Schibsted_Grotesk } from "next/font/google";
 import { Header } from "./components/Header";
 import "./globals.css";
 
@@ -32,15 +32,23 @@ const structuredData = [
   },
 ];
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
+const schibstedGrotesk = Schibsted_Grotesk({
+  variable: "--font-schibsted-grotesk",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+});
+
+const dmMono = DM_Mono({
+  variable: "--font-dm-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -109,10 +117,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${bricolage.variable} ${ibmPlexMono.variable} bg-background text-foreground antialiased`}
+        className={`${instrumentSerif.variable} ${schibstedGrotesk.variable} ${dmMono.variable} bg-background text-foreground antialiased`}
       >
         <a
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-60 focus:rounded-md focus:bg-(--skip-link-bg) focus:px-3 focus:py-2 focus:text-(--skip-link-text) focus:outline-none"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-60 focus:rounded-full focus:bg-(--accent) focus:px-4 focus:py-2 focus:text-(--accent-contrast) focus:outline-none"
           href="#main-content"
         >
           Skip to main content

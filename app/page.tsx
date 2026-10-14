@@ -1,28 +1,52 @@
 import Link from "next/link";
 import { experience, resumeProjects, skillGroups } from "./content";
 
-const jumpLinkClass =
-  "inline-flex items-center border-b border-(--border-strong) py-1 font-mono text-xs font-medium uppercase tracking-[0.14em] text-(--text-secondary) transition-colors hover:border-(--accent) hover:text-(--accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)";
+const jumpLinks = [
+  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
+  { href: "#selected-projects", label: "Projects" },
+  { href: "#education", label: "Education" },
+];
 
-const socialLinkClass =
-  "inline-flex items-center justify-between gap-6 border border-(--border-strong) px-4 py-3 font-mono text-xs font-medium uppercase tracking-[0.12em] text-(--text-primary) transition-colors hover:border-(--accent) hover:bg-(--accent) hover:text-(--accent-contrast) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)";
+const focusRingClass =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)";
 
-function SectionHeading({
+const socialLinkClass = `inline-flex items-center gap-3 rounded-full border border-(--border-strong) px-5 py-2.5 font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-(--text-primary) transition-colors hover:border-(--text-primary) hover:bg-(--text-primary) hover:text-(--background) ${focusRingClass}`;
+
+const formatIndex = (index: number) => String(index + 1).padStart(2, "0");
+
+function Section({
+  id,
   index,
+  title,
   children,
 }: Readonly<{
+  id: string;
   index: string;
+  title: string;
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex items-end gap-4 border-b border-(--border-strong) pb-4">
-      <span className="font-mono text-xs text-(--accent)" aria-hidden="true">
-        {index}
-      </span>
-      <h2 className="text-3xl font-semibold uppercase tracking-[-0.04em] text-(--text-primary) sm:text-4xl">
-        {children}
-      </h2>
-    </div>
+    <section
+      id={id}
+      className="grid gap-8 border-t border-(--border-strong) pt-6 lg:grid-cols-12 lg:gap-12"
+    >
+      <div className="lg:col-span-4">
+        <div className="lg:sticky lg:top-28">
+          <span
+            className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-(--accent)"
+            aria-hidden="true"
+          >
+            № {index}
+          </span>
+          <h2 className="mt-3 font-serif text-5xl leading-[0.95] tracking-[-0.02em] text-(--text-primary) sm:text-6xl">
+            {title}
+          </h2>
+        </div>
+      </div>
+
+      <div className="lg:col-span-8">{children}</div>
+    </section>
   );
 }
 
@@ -60,248 +84,253 @@ function GitHubIcon() {
 
 export default function Home() {
   return (
-    <div className="mx-auto w-full max-w-6xl border-x border-(--border-subtle) px-5 py-28 sm:px-8 sm:py-36 lg:px-12">
-      <section className="relative">
-        <div className="grid gap-10 lg:grid-cols-[1fr_18rem] lg:items-end">
-          <div>
-            <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-(--accent)">
-              <span className="size-2 bg-(--accent)" aria-hidden="true" />
-              Full Stack Developer
-            </p>
+    <div className="mx-auto w-full max-w-6xl px-5 pb-28 pt-28 sm:px-8 sm:pb-36 sm:pt-32 lg:px-12">
+      <section>
+        <div className="flex items-center justify-between gap-4 border-y border-(--border-strong) py-3 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-(--text-muted) motion-safe:animate-rise">
+          <p className="flex items-center gap-3 text-(--accent)">
+            <span
+              className="size-1.5 rounded-full bg-(--accent)"
+              aria-hidden="true"
+            />
+            Full Stack Developer
+          </p>
+          <p>Profile / 2026</p>
+        </div>
 
-            <h1 className="mt-7 max-w-4xl text-[clamp(4.5rem,14vw,10.5rem)] font-semibold leading-[0.78] tracking-[-0.085em] text-(--text-primary)">
-              Jordan
-              <br />
-              Page
-            </h1>
-          </div>
+        <div className="mt-10 grid gap-10 sm:mt-14 lg:grid-cols-[1fr_16rem] lg:items-end">
+          <h1 className="font-serif text-[clamp(5.5rem,22vw,16rem)] leading-[0.8] tracking-[-0.035em] text-(--text-primary) motion-safe:animate-rise motion-safe:[animation-delay:100ms]">
+            Jordan
+            <br />
+            <em className="ml-[14%] text-(--accent)">Page</em>
+          </h1>
 
-          <div className="border-t border-(--border-strong) pt-5 lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0">
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-(--text-muted)">
-              Profile / 2026
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-(--text-secondary)">
-              I build dependable software for complex, real-world systems.
+          <div className="motion-safe:animate-rise motion-safe:[animation-delay:250ms] lg:pb-4">
+            <p className="font-serif text-3xl italic leading-tight text-(--text-primary)">
+              I like software.
             </p>
             <a
               href="mailto:jp@jordanpage.dev"
-              className="mt-5 inline-block font-mono text-xs text-(--text-primary) underline decoration-(--accent) decoration-2 underline-offset-4 transition-colors hover:text-(--accent)"
+              className={`mt-4 inline-block font-mono text-xs text-(--text-secondary) underline decoration-(--accent) decoration-1 underline-offset-4 transition-colors hover:text-(--accent) ${focusRingClass}`}
             >
               jp@jordanpage.dev
             </a>
           </div>
         </div>
 
-        <p className="mt-14 max-w-3xl border-l-4 border-(--accent) pl-5 text-lg leading-relaxed text-(--text-secondary) sm:text-xl">
-          Full Stack Developer with 4 years of enterprise experience building
-          React/.NET applications for clients including Lawrence Livermore
-          National Laboratory and the US Army Corps of Engineers. Proven track
-          record in developing and maintaining enterprise-level applications,
-          automating processes, and performing data analytics.
-        </p>
+        <div className="mt-16 grid gap-12 motion-safe:animate-rise motion-safe:[animation-delay:400ms] sm:mt-20 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <p className="text-lg leading-relaxed text-(--text-secondary) first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-serif first-letter:text-7xl first-letter:leading-[0.8] first-letter:text-(--accent) sm:text-xl">
+              Full Stack Developer with 4 years of enterprise experience
+              building React/.NET applications for clients including Lawrence
+              Livermore National Laboratory and the US Army Corps of Engineers.
+              Proven track record in developing and maintaining
+              enterprise-level applications, automating processes, and
+              performing data analytics.
+            </p>
 
-        <nav aria-label="Jump to section" className="mt-10">
-          <ul className="flex flex-wrap gap-x-6 gap-y-3">
-            <li>
-              <a className={jumpLinkClass} href="#skills">
-                Skills
-              </a>
-            </li>
-            <li>
-              <a className={jumpLinkClass} href="#experience">
-                Experience
-              </a>
-            </li>
-            <li>
-              <a className={jumpLinkClass} href="#selected-projects">
-                Projects
-              </a>
-            </li>
-            <li>
-              <a className={jumpLinkClass} href="#education">
-                Education
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        <ul className="mt-10 flex flex-wrap gap-3">
-          <li>
-            <a
-              aria-label="LinkedIn (opens in new tab)"
-              className={socialLinkClass}
-              href="https://www.linkedin.com/in/jordankalebpage/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-              <LinkedInIcon />
-            </a>
-          </li>
-          <li>
-            <a
-              aria-label="GitHub (opens in new tab)"
-              className={socialLinkClass}
-              href="https://github.com/jordankalebpage"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-              <GitHubIcon />
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <hr className="my-20 border-t border-(--border-subtle) sm:my-28" />
-
-      <section id="skills">
-        <SectionHeading index="01">Skills</SectionHeading>
-
-        <dl className="mt-8 grid border-l border-t border-(--border-subtle) sm:grid-cols-2">
-          {skillGroups.map((group, index) => (
-            <div
-              key={group.label}
-              className="group border-b border-r border-(--border-subtle) bg-(--surface-card) p-5 transition-colors hover:bg-(--surface-hover)"
-            >
-              <dt className="flex items-center justify-between font-mono text-xs font-medium uppercase tracking-wider text-(--accent)">
-                <span>{group.label}</span>
-                <span className="text-(--text-muted)" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-              </dt>
-              <dd className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
-                {group.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      <hr className="my-20 border-t border-(--border-subtle) sm:my-28" />
-
-      <section id="experience">
-        <SectionHeading index="02">Experience</SectionHeading>
-
-        <div className="mt-3">
-          {experience.map((role, index) => (
-            <article
-              key={`${role.company}-${role.title}`}
-              className="group grid gap-5 border-b border-(--border-subtle) py-8 sm:grid-cols-[9rem_1fr] sm:gap-8"
-            >
-              <div>
-                <span className="font-mono text-xs text-(--accent)">
-                  {String(index + 1).padStart(2, "0")} /
-                </span>
-                <p className="mt-3 font-mono text-[0.65rem] uppercase leading-relaxed tracking-wider text-(--text-muted)">
-                  {role.period}
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold tracking-tight text-(--text-primary) sm:text-2xl">
-                  {role.title}
-                </h3>
-
-                <p className="mt-1 font-mono text-xs font-medium uppercase tracking-wider text-(--accent)">
-                  {role.company}
-                </p>
-
-                <ul className="mt-5 space-y-3 text-sm leading-relaxed text-(--text-secondary)">
-                  {role.highlights.map((highlight) => (
-                    <li key={highlight} className="relative pl-5">
-                      <span className="absolute left-0 top-[0.65em] h-px w-2 bg-(--border-strong)" />
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <hr className="my-20 border-t border-(--border-subtle) sm:my-28" />
-
-      <section id="selected-projects">
-        <SectionHeading index="03">Selected Projects</SectionHeading>
-
-        <p className="mt-4 text-base leading-relaxed text-(--text-secondary)">
-          These highlight real-world work and utilities.
-        </p>
-
-        <div className="mt-6">
-          <Link
-            className="inline-flex items-center gap-8 bg-(--accent) px-5 py-3 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-(--accent-contrast) transition-colors hover:bg-(--accent-hover) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)"
-            href="/projects"
-          >
-            Explore Showcase
-            <span aria-hidden="true">&rarr;</span>
-          </Link>
-        </div>
-
-        <div className="mt-8 grid border-l border-t border-(--border-subtle) sm:grid-cols-2">
-          {resumeProjects.map((project, index) => (
-            <article
-              key={project.name}
-              className="group flex min-h-56 flex-col justify-between border-b border-r border-(--border-subtle) bg-(--surface-card) p-6 transition-colors hover:bg-(--surface-active)"
-            >
-              <div>
-                <span className="font-mono text-[0.65rem] text-(--text-muted)">
-                  P-{String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-8 text-lg font-semibold tracking-tight text-(--text-primary) transition-colors group-hover:text-(--accent)">
-                  {project.name}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-(--text-secondary)">
-                  {project.description}
-                </p>
-              </div>
-
-              <a
-                aria-label={`${project.name} repository (opens in new tab)`}
-                className="mt-5 inline-flex w-fit items-center gap-2 border-b border-(--accent-border) pb-1 font-mono text-xs font-medium uppercase tracking-wider text-(--accent) transition-colors hover:border-(--accent) hover:text-(--accent-hover)"
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View on GitHub
-                <GitHubIcon />
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <hr className="my-20 border-t border-(--border-subtle) sm:my-28" />
-
-      <section id="education">
-        <SectionHeading index="04">Education</SectionHeading>
-
-        <div className="mt-8 border-l-4 border-(--accent) bg-(--surface-card) p-6 sm:p-8">
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-            <h3 className="text-lg font-bold text-(--text-strong)">
-              Bachelor of Science in Computer Science
-            </h3>
-            <span className="font-mono text-xs text-(--text-muted)">
-              May 2018
-            </span>
+            <ul className="mt-10 flex flex-wrap gap-3">
+              <li>
+                <a
+                  aria-label="LinkedIn (opens in new tab)"
+                  className={socialLinkClass}
+                  href="https://www.linkedin.com/in/jordankalebpage/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkedInIcon />
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  aria-label="GitHub (opens in new tab)"
+                  className={socialLinkClass}
+                  href="https://github.com/jordankalebpage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GitHubIcon />
+                  GitHub
+                </a>
+              </li>
+            </ul>
           </div>
 
-          <p className="mt-1 text-sm font-medium text-(--accent)">
-            Saint Vincent College, Latrobe, PA
+          <nav
+            aria-labelledby="contents-heading"
+            className="lg:col-span-4 lg:col-start-9"
+          >
+            <p
+              id="contents-heading"
+              className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-(--text-muted)"
+            >
+              Contents
+            </p>
+
+            <ul className="mt-3 border-t border-(--border-subtle)">
+              {jumpLinks.map((link, index) => (
+                <li
+                  key={link.href}
+                  className="border-b border-(--border-subtle)"
+                >
+                  <a
+                    className={`group flex items-baseline gap-3 py-3 text-(--text-primary) transition-colors hover:text-(--accent) ${focusRingClass}`}
+                    href={link.href}
+                  >
+                    <span
+                      className="font-mono text-[0.7rem] text-(--text-muted)"
+                      aria-hidden="true"
+                    >
+                      {formatIndex(index)}
+                    </span>
+                    <span className="font-serif text-2xl leading-none">
+                      {link.label}
+                    </span>
+                    <span
+                      className="flex-1 border-b border-dotted border-(--border-strong)"
+                      aria-hidden="true"
+                    />
+                    <span
+                      className="font-mono text-xs transition-transform duration-300 group-hover:translate-y-1"
+                      aria-hidden="true"
+                    >
+                      &darr;
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </section>
+
+      <div className="mt-24 space-y-24 sm:mt-32 sm:space-y-32">
+        <Section id="skills" index="01" title="Skills">
+          <dl className="border-b border-(--border-subtle)">
+            {skillGroups.map((group) => (
+              <div
+                key={group.label}
+                className="grid gap-1 border-t border-(--border-subtle) py-4 first:border-t-0 first:pt-0 sm:grid-cols-[12rem_1fr] sm:items-baseline sm:gap-6"
+              >
+                <dt className="font-serif text-2xl italic leading-tight text-(--text-primary)">
+                  {group.label}
+                </dt>
+                <dd className="text-base leading-relaxed text-(--text-secondary)">
+                  {group.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Section>
+
+        <Section id="experience" index="02" title="Experience">
+          {experience.map((role) => (
+            <article
+              key={`${role.company}-${role.title}`}
+              className="border-t border-(--border-subtle) py-10 first:border-t-0 first:pt-0 last:pb-0"
+            >
+              <h3 className="font-serif text-3xl leading-tight tracking-[-0.01em] text-(--text-primary) sm:text-4xl">
+                {role.title}
+              </h3>
+
+              <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[0.7rem] uppercase tracking-[0.14em]">
+                <span className="font-medium text-(--accent)">
+                  {role.company}
+                </span>
+                <span className="h-px w-6 bg-(--border-strong)" aria-hidden="true" />
+                <span className="text-(--text-muted)">{role.period}</span>
+              </p>
+
+              <ul className="mt-6 space-y-3 text-base leading-relaxed text-(--text-secondary)">
+                {role.highlights.map((highlight) => (
+                  <li key={highlight} className="relative pl-6">
+                    <span
+                      className="absolute left-0 top-[0.8em] h-px w-3 bg-(--accent)"
+                      aria-hidden="true"
+                    />
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </Section>
+
+        <Section id="selected-projects" index="03" title="Selected Projects">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-base leading-relaxed text-(--text-secondary)">
+              These highlight real-world work and utilities.
+            </p>
+
+            <Link
+              className={`inline-flex w-fit shrink-0 items-center gap-4 rounded-full bg-(--accent) px-5 py-2.5 font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-(--accent-contrast) transition-colors hover:bg-(--accent-hover) ${focusRingClass}`}
+              href="/projects"
+            >
+              Explore Showcase
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+
+          <div className="mt-8 border-b border-(--border-subtle)">
+            {resumeProjects.map((project, index) => (
+              <article
+                key={project.name}
+                className="group grid grid-cols-[2.25rem_1fr] gap-y-4 border-t border-(--border-subtle) py-6 sm:grid-cols-[3rem_1fr_auto] sm:items-baseline sm:gap-x-6"
+              >
+                <span
+                  className="font-mono text-[0.7rem] text-(--text-muted)"
+                  aria-hidden="true"
+                >
+                  {formatIndex(index)}
+                </span>
+
+                <div>
+                  <h3 className="font-serif text-2xl leading-tight text-(--text-primary) transition-colors group-hover:italic group-hover:text-(--accent) sm:text-3xl">
+                    {project.name}
+                  </h3>
+                  <p className="mt-2 max-w-xl text-sm leading-relaxed text-(--text-secondary)">
+                    {project.description}
+                  </p>
+                </div>
+
+                <a
+                  aria-label={`${project.name} repository (opens in new tab)`}
+                  className={`col-start-2 inline-flex w-fit items-center gap-2 font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-(--text-secondary) underline decoration-(--border-strong) underline-offset-4 transition-colors hover:text-(--accent) hover:decoration-(--accent) sm:col-start-3 ${focusRingClass}`}
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <GitHubIcon />
+                  View on GitHub
+                </a>
+              </article>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="education" index="04" title="Education">
+          <h3 className="font-serif text-3xl leading-tight tracking-[-0.01em] text-(--text-primary) sm:text-4xl">
+            Bachelor of Science in Computer Science
+          </h3>
+
+          <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[0.7rem] uppercase tracking-[0.14em]">
+            <span className="font-medium text-(--accent)">
+              Saint Vincent College, Latrobe, PA
+            </span>
+            <span className="h-px w-6 bg-(--border-strong)" aria-hidden="true" />
+            <span className="text-(--text-muted)">May 2018</span>
           </p>
 
-          <p className="mt-4 text-sm leading-relaxed text-(--text-secondary)">
-            <strong className="text-(--text-strong)">
+          <p className="mt-6 text-base leading-relaxed text-(--text-secondary)">
+            <strong className="font-semibold text-(--text-primary)">
               Relevant coursework:
             </strong>{" "}
             Applied Cryptography, Data Communications, Server-Side Programming,
             Computer Architecture, Software Engineering, Database Concepts, Data
             Structures.
           </p>
-        </div>
-      </section>
+        </Section>
+      </div>
     </div>
   );
 }

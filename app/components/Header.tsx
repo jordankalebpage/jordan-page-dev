@@ -135,17 +135,18 @@ export function Header() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-(--border-subtle) bg-(--surface-header) backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-6xl items-stretch justify-between border-x border-(--border-subtle)">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-(--border-subtle) bg-(--surface-header) backdrop-blur-md">
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8 lg:px-12">
         <Link
           aria-label="Jordan Page home"
-          className="flex items-center border-r border-(--border-subtle) px-5 font-mono text-xs font-semibold tracking-[0.18em] text-(--text-primary) transition-colors hover:bg-(--surface-hover) hover:text-(--accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--focus-ring) sm:px-8"
+          className="font-serif text-2xl italic leading-none text-(--text-primary) transition-colors hover:text-(--accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-4 focus-visible:ring-offset-(--focus-ring-offset)"
           href="/"
         >
-          JP
+          <span className="sm:hidden">JP</span>
+          <span className="hidden sm:inline">Jordan Page</span>
         </Link>
 
-        <nav aria-label="Primary" className="flex items-stretch">
+        <nav aria-label="Primary" className="flex items-center gap-5 sm:gap-8">
           {navItems.map((item) => {
             const isActive =
               item.href === "/"
@@ -156,11 +157,11 @@ export function Header() {
               <Link
                 key={item.href}
                 aria-current={isActive ? "page" : undefined}
-                className={`relative flex items-center px-3 py-5 font-mono text-[0.65rem] font-medium uppercase tracking-wider transition-colors sm:px-5 ${
+                className={`relative py-2 font-mono text-[0.7rem] font-medium uppercase tracking-[0.16em] transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:bg-(--accent) after:transition-transform after:duration-300 ${
                   isActive
-                    ? "bg-(--surface-active) text-(--accent) after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-(--accent) sm:after:inset-x-5"
-                    : "text-(--text-secondary) hover:bg-(--surface-hover) hover:text-(--text-primary)"
-                } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--focus-ring)`}
+                    ? "text-(--text-primary) after:scale-x-100"
+                    : "text-(--text-muted) after:scale-x-0 hover:text-(--text-primary) hover:after:scale-x-100"
+                } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-4 focus-visible:ring-offset-(--focus-ring-offset)`}
                 href={item.href}
               >
                 {item.label}
@@ -170,7 +171,7 @@ export function Header() {
 
           <button
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className="group relative flex w-12 cursor-pointer items-center justify-center border-l border-(--border-subtle) bg-(--surface-active) text-(--text-secondary) transition-colors hover:bg-(--accent) hover:text-(--accent-contrast) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--focus-ring) sm:w-16"
+            className="relative flex size-9 cursor-pointer items-center justify-center rounded-full border border-(--border-strong) text-(--text-primary) transition-colors hover:border-(--accent) hover:bg-(--accent) hover:text-(--accent-contrast) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--focus-ring) focus-visible:ring-offset-2 focus-visible:ring-offset-(--focus-ring-offset)"
             onClick={toggleTheme}
             type="button"
           >
