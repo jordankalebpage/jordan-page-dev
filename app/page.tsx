@@ -82,10 +82,43 @@ function GitHubIcon() {
   );
 }
 
+function MailIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="size-4 shrink-0"
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        height="14"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        width="18"
+        x="3"
+        y="5"
+      />
+      <path
+        d="m3.5 6.5 8.5 6.5 8.5-6.5"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.75"
+      />
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
     <div className="mx-auto w-full max-w-6xl px-5 pb-28 pt-28 sm:px-8 sm:pb-36 sm:pt-32 lg:px-12">
-      <section>
+      <section aria-labelledby="intro-heading">
+        <h1 id="intro-heading" className="sr-only">
+          Jordan Page
+        </h1>
+
         <div className="flex items-center justify-between gap-4 border-y border-(--border-strong) py-3 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-(--text-muted) motion-safe:animate-rise">
           <p className="flex items-center gap-3 text-(--accent)">
             <span
@@ -97,27 +130,7 @@ export default function Home() {
           <p>Profile / 2026</p>
         </div>
 
-        <div className="mt-10 grid gap-10 sm:mt-14 lg:grid-cols-[1fr_16rem] lg:items-end">
-          <h1 className="font-serif text-[clamp(5.5rem,22vw,16rem)] leading-[0.8] tracking-[-0.035em] text-(--text-primary) motion-safe:animate-rise motion-safe:[animation-delay:100ms]">
-            Jordan
-            <br />
-            <em className="ml-[14%] text-(--accent)">Page</em>
-          </h1>
-
-          <div className="motion-safe:animate-rise motion-safe:[animation-delay:250ms] lg:pb-4">
-            <p className="font-serif text-3xl italic leading-tight text-(--text-primary)">
-              I like software.
-            </p>
-            <a
-              href="mailto:jp@jordanpage.dev"
-              className={`mt-4 inline-block font-mono text-xs text-(--text-secondary) underline decoration-(--accent) decoration-1 underline-offset-4 transition-colors hover:text-(--accent) ${focusRingClass}`}
-            >
-              jp@jordanpage.dev
-            </a>
-          </div>
-        </div>
-
-        <div className="mt-16 grid gap-12 motion-safe:animate-rise motion-safe:[animation-delay:400ms] sm:mt-20 lg:grid-cols-12">
+        <div className="mt-10 grid gap-12 motion-safe:animate-rise motion-safe:[animation-delay:100ms] sm:mt-14 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <p className="text-lg leading-relaxed text-(--text-secondary) first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-serif first-letter:text-7xl first-letter:leading-[0.8] first-letter:text-(--accent) sm:text-xl">
               Full Stack Developer with 4 years of enterprise experience
@@ -151,6 +164,15 @@ export default function Home() {
                 >
                   <GitHubIcon />
                   GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  className={socialLinkClass}
+                  href="mailto:jp@jordanpage.dev"
+                >
+                  <MailIcon />
+                  jp@jordanpage.dev
                 </a>
               </li>
             </ul>

@@ -4,7 +4,7 @@ import { Header } from "./components/Header";
 import "./globals.css";
 
 const siteUrl = new URL("https://jordanpage.dev");
-const siteTitle = "Jordan Page";
+const siteTitle = "JP's Portfolio";
 const siteDescription =
   "Personal website of Jordan Page, a full stack developer building web apps.";
 const themeStorageKey = "jp-theme";
